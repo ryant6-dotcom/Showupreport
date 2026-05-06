@@ -1,140 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Search Visibility Audit | Show Up Report</title>
-    <meta name="description" content="A one-time $39 AI Search Visibility Audit for local home-service businesses. See who AI and Google recommend instead of you.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #fafafa;
-        }
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 60px 24px;
-        }
-        h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            color: #0a0a0a;
-        }
-        .subhead {
-            font-size: 1.15rem;
-            color: #555;
-            margin-bottom: 48px;
-        }
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 48px;
-            margin-bottom: 16px;
-            color: #0a0a0a;
-        }
-        p { margin-bottom: 16px; color: #333; }
-        blockquote {
-            border-left: 4px solid #0066ff;
-            padding: 12px 20px;
-            margin: 24px 0;
-            background: #f0f6ff;
-            color: #1a1a1a;
-            font-style: italic;
-        }
-        ul { margin-bottom: 16px; padding-left: 24px; }
-        li { margin-bottom: 8px; color: #333; }
-        .price-card {
-            background: white;
-            border: 2px solid #0066ff;
-            border-radius: 12px;
-            padding: 32px;
-            margin: 32px 0;
-            text-align: center;
-        }
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #0066ff;
-            margin-bottom: 8px;
-        }
-        .price-note { color: #666; margin-bottom: 24px; }
-        .cta-button {
-            display: inline-block;
-            background: #0066ff;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background 0.2s;
-        }
-        .cta-button:hover { background: #0052cc; }
-        .disclaimer {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 24px;
-            line-height: 1.5;
-        }
-        footer {
-            margin-top: 80px;
-            padding-top: 32px;
-            border-top: 1px solid #ddd;
-            color: #888;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Up Report — $39 AI Search Visibility Audit</title>
+  <meta name="description" content="A one-time $39 AI Search Visibility Audit for local home-service businesses. Plain-English report delivered within 48 hours. No subscription.">
+  <meta name="theme-color" content="#1f3a5f">
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --ink: #1a1a1a;
+      --ink-soft: #44464a;
+      --ink-mute: #71747a;
+      --rule: #e3dfd5;
+      --rule-soft: #efece4;
+      --accent: #1f3a5f;
+      --accent-deep: #14263f;
+      --accent-tint: #eef1f6;
+      --focus: #c9d2dd;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 36px 22px 64px;
+    }
+
+    .brand {
+      margin: 0 0 56px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    main { display: block; }
+
+    section { margin-top: 56px; }
+    section:first-of-type { margin-top: 0; }
+
+    h1 {
+      font-size: 1.95rem;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 18px;
+    }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      margin: 0 0 14px;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--ink-soft);
+    }
+    p:last-child { margin-bottom: 0; }
+    p em { color: var(--ink); font-style: italic; }
+
+    .hero .sub {
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      margin: 0 0 28px;
+      line-height: 1.55;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.02rem;
+      padding: 15px 28px;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
+      transition: background .15s ease, transform .15s ease;
+      border: 0;
+      cursor: pointer;
+    }
+    .cta:hover { background: var(--accent-deep); }
+    .cta:active { transform: translateY(1px); }
+    .cta:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .cta--lg {
+      font-size: 1.08rem;
+      padding: 17px 36px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .deliverables {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid var(--rule);
+    }
+    .deliverables li {
+      border-bottom: 1px solid var(--rule);
+      padding: 14px 0 14px 26px;
+      position: relative;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .deliverables li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 24px;
+      width: 14px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .nots {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nots li {
+      padding: 6px 0 6px 22px;
+      position: relative;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .nots li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--ink-mute);
+    }
+
+    .pricecard {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 34px 24px 30px;
+      text-align: center;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 14px 36px -22px rgba(31,58,95,0.28);
+    }
+    .pricecard .label {
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .pricecard .price {
+      font-size: 3.1rem;
+      line-height: 1;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .pricecard .terms {
+      color: var(--ink-soft);
+      margin: 0 0 24px;
+      font-size: 1rem;
+    }
+    .fineprint {
+      margin: 22px auto 0;
+      max-width: 460px;
+      font-size: 0.84rem;
+      color: var(--ink-mute);
+      line-height: 1.55;
+    }
+
+    .note {
+      background: var(--accent-tint);
+      border-left: 3px solid var(--accent);
+      padding: 20px 22px;
+      border-radius: 0 4px 4px 0;
+    }
+    .note p { color: var(--ink); }
+    .signoff {
+      margin-top: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-mute);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    footer .name { color: var(--ink); font-weight: 600; }
+    footer .dot { color: var(--rule); margin: 0 8px; }
+
+    @media (min-width: 700px) {
+      .wrap { max-width: 680px; padding: 56px 28px 88px; }
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.35rem; }
+      .hero .sub { font-size: 1.18rem; }
+      .pricecard { padding: 48px 40px 40px; }
+      .pricecard .price { font-size: 3.6rem; }
+      section { margin-top: 64px; }
+      .brand { margin-bottom: 72px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta { transition: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
+  <div class="wrap">
+    <p class="brand">Show Up Report</p>
+
+    <main>
+      <section class="hero">
         <h1>Are customers finding your business when they ask AI or Google who to hire?</h1>
-        <p class="subhead">A one-time $39 AI Search Visibility Audit for local home-service businesses. No monthly plan. No ranking promises.</p>
+        <p class="sub">A $39 one-time AI Search Visibility Audit for local home-service businesses. Plain-English report, delivered within 48 hours.</p>
+        <!-- TODO[stripe-link]: replace href="#" with the live Stripe Payment Link -->
+        <a class="cta" href="#">Buy the Audit — $39</a>
+      </section>
 
+      <section>
         <h2>The problem</h2>
-        <p>Customers are starting to search differently. Instead of only clicking through websites, they ask Google, ChatGPT, and other AI tools things like "who should I call for AC repair near me?" or "best emergency plumber in San Diego."</p>
-        <p>If your public business information is thin, unclear, outdated, or weaker than competitors, those systems may not understand why you are a good option.</p>
-        <blockquote>Who shows up instead of you, and what public signals are making them look easier to recommend?</blockquote>
+        <p>Most local home-service jobs still start with someone asking a question. They ask a neighbor, they ask Google, and now they ask ChatGPT. The first two have been around for years. The third is new, and it is changing which businesses get recommended.</p>
+        <p>When somebody in your area asks "who should I call for AC repair near me?" or "best emergency plumber in San Diego," the answer is built from public signals — your website, your service-area pages, your Google profile, your reviews, and how those compare to the shop two ZIP codes over.</p>
+        <p>The question worth answering: <em>Who shows up instead of you, and what public signals make them look easier to recommend?</em></p>
+      </section>
 
-        <h2>The AI Search Visibility Audit</h2>
-        <p>You get a one-time public-facing report showing how your business appears for AI/search-style discovery, including your website clarity, service-area signals, Google/review profile, visible trust signals, and competitor gaps.</p>
-        <p>The audit does not guarantee rankings or AI recommendations. It shows what is missing, unclear, or weaker than nearby competitors.</p>
-        <p>This is a report, not a subscription. You can use the action list yourself or hand it to your website or marketing person.</p>
-
+      <section>
         <h2>What you get</h2>
-        <ul>
-            <li>Customer-style AI/search prompt checks</li>
-            <li>A plain-English visibility score</li>
-            <li>Nearby competitor snapshot</li>
-            <li>Website, service-area, review, and trust-signal review</li>
-            <li>Ranked action list by impact and effort</li>
-            <li>Notes you can use yourself or hand to your website or Google profile manager</li>
+        <ul class="deliverables">
+          <li>Customer-style AI and search prompt checks — what your prospects are actually typing, and who comes back as the answer</li>
+          <li>A plain-English visibility score</li>
+          <li>A snapshot of nearby competitors and where they look stronger</li>
+          <li>Website, service-area, review, and trust-signal review</li>
+          <li>A ranked action list, ordered by impact and effort</li>
+          <li>Owner-readable next steps you can use yourself or hand to your website person</li>
         </ul>
+      </section>
 
-        <div class="price-card">
-            <div class="price">$39</div>
-            <p class="price-note">One-time. Delivered within 48 hours.</p>
-            <a href="#" class="cta-button">Buy the Audit</a>
-            <p class="disclaimer">One-time fixed-scope report. No guaranteed revenue, leads, rankings, AI recommendations, reviews, or conversion lift. No monthly subscription. Delivery starts after payment and receipt of the business website.</p>
+      <section>
+        <div class="pricecard">
+          <p class="label">AI Search Visibility Audit</p>
+          <div class="price">$39</div>
+          <p class="terms">One-time. Delivered within 48 hours.</p>
+          <!-- TODO[stripe-link]: replace href="#" with the live Stripe Payment Link -->
+          <a class="cta cta--lg" href="#">Buy the Audit</a>
+          <p class="fineprint">One-time fixed-scope report. No guaranteed revenue, leads, rankings, AI recommendations, reviews, or conversion lift. No monthly subscription. Delivery starts after payment and receipt of the business website.</p>
         </div>
+      </section>
 
+      <section>
         <h2>Why this is different</h2>
-        <p>Free graders give you a score. Monthly platforms give you a dashboard. This is a small, local, one-time competitor report built for owners who want to know what is happening without signing up for another tool.</p>
+        <p>Free graders give you a score. Monthly platforms give you a dashboard. This is a one-time, local, owner-readable report — written for the person who runs the business, not for a marketing team.</p>
         <p>If you later want help fixing the gaps, ask and I can quote that separately. The audit stands on its own.</p>
+      </section>
 
+      <section>
         <h2>What this is not</h2>
-        <p>This is not a guaranteed ranking service, paid ads service, deep SEO campaign, full website redesign, custom software build, SMS/text campaign, monthly monitoring plan, or guaranteed revenue program.</p>
+        <ul class="nots">
+          <li>Not a ranking guarantee or AI recommendation guarantee</li>
+          <li>Not paid ads management</li>
+          <li>Not a deep SEO campaign</li>
+          <li>Not a full website redesign</li>
+          <li>Not monthly monitoring or any recurring service</li>
+          <li>Not a leads or revenue program</li>
+        </ul>
+      </section>
 
-        <h2>Founder note</h2>
-        <p>I am testing this one-time audit with a limited number of local and regional home-service businesses. The goal is simple: show what AI/search can understand from your public information, identify who appears stronger, and give you a useful fix list without asking you to buy a monthly plan.</p>
+      <section>
+        <h2>A note from me</h2>
+        <div class="note">
+          <p>I'm running this as a small, intentional test — a limited number of $39 audits to see whether owners actually find the report useful. If you'd like one of the early slots, the button above is how to claim it.</p>
+          <p class="signoff">Ryan — Show Up Report</p>
+        </div>
+      </section>
+    </main>
 
-        <footer>
-            <p>Show Up Report &middot; Contact: [your email] &middot; [your phone]</p>
-        </footer>
-    </div>
+    <footer>
+      <p><span class="name">Show Up Report</span><span class="dot">·</span>[email]<span class="dot">·</span>[phone]</p>
+    </footer>
+  </div>
 </body>
 </html>
