@@ -223,7 +223,13 @@
     @media (prefers-reduced-motion: reduce) {
       .cta { transition: none; }
     }
+
+    .pricecard stripe-buy-button {
+      display: inline-block;
+      margin: 16px 0;
+    }
   </style>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -261,8 +267,10 @@
           <p class="label">AI Search Visibility Audit</p>
           <div class="price">$39</div>
           <p class="terms">One-time. Delivered within 48 hours.</p>
-          <!-- TODO[stripe-link]: replace href="#" with the live Stripe Payment Link -->
-          <a class="cta cta--lg" href="#">Buy the Audit</a>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1TUUXeRPTSzDfkvU5AWbz5wp"
+            publishable-key="pk_live_51TUBivRPTSzDfkvUhQFsQZ3Rr3g65ICmFJMGHCA3vLpvNundWzTQpuDyFLei3Dza3pg7r1rdNIY9tGeP8V66mMC1008ATcYzkg">
+          </stripe-buy-button>
           <p class="fineprint">One-time fixed-scope report. No guaranteed revenue, leads, rankings, AI recommendations, reviews, or conversion lift. No monthly subscription. Delivery starts after payment and receipt of the business website.</p>
         </div>
       </section>
