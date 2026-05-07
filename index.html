@@ -4,21 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Show Up Report — $39 AI Search Visibility Audit</title>
-  <meta name="description" content="A one-time $39 AI Search Visibility Audit for HVAC and plumbing companies in San Diego County. Plain-English report delivered within 48 hours. No subscription.">
+  <meta name="description" content="Find out exactly how AI sees your business, who shows up instead, and what to fix. $39, delivered in 48 hours. Built for HVAC and plumbing companies in San Diego County.">
   <meta name="theme-color" content="#1a2332">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a2332'/%3E%3Crect x='7' y='20' width='4' height='6' fill='%23fbbf24'/%3E%3Crect x='14' y='14' width='4' height='12' fill='%23fbbf24'/%3E%3Crect x='21' y='8' width='4' height='18' fill='%23fbbf24'/%3E%3C/svg%3E">
   <style>
     :root {
       --navy: #1a2332;
-      --navy-deep: #0f1620;
       --amber: #fbbf24;
       --bg: #faf9f6;
       --surface: #ffffff;
       --ink: #0a0a0a;
       --ink-soft: #4a5568;
+      --ink-mute: #6b7280;
       --rule: #e2e8f0;
-      --rule-strong: #cdd5e0;
-      --note-bg: #f1f4f8;
       --focus: #c9d2dd;
     }
 
@@ -34,144 +32,117 @@
     }
 
     .wrap {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 36px 22px 64px;
+      padding: 56px 24px 72px;
     }
 
     main { display: block; }
-    section { margin-top: 56px; }
+    section { margin-top: 96px; }
     section.hero { margin-top: 0; }
 
-    .wordmark {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      letter-spacing: 0.15em;
+    /* Hero — centered */
+    .hero { text-align: center; }
+    .hero .logo {
+      display: block;
+      margin: 0 auto 16px;
+    }
+    .hero .wordmark {
+      font-size: 12px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--ink-soft);
       font-weight: 600;
-      margin: 0 0 22px;
+      margin: 0 0 36px;
     }
-    .wordmark .dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--amber);
-      display: inline-block;
+    .hero .wordmark .dot {
+      color: var(--amber);
+      font-size: 1.4em;
+      line-height: 1;
+      margin-left: 4px;
+      vertical-align: middle;
     }
-
-    h1 {
-      font-size: 2.05rem;
+    .hero h1 {
+      font-size: 2rem;
       line-height: 1.1;
-      letter-spacing: -0.018em;
-      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-weight: 800;
       color: var(--ink);
-      margin: 0 0 18px;
+      max-width: 720px;
+      margin: 0 auto 22px;
     }
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.005em;
-      margin: 0 0 16px;
-      color: var(--ink);
-    }
-
-    p {
-      margin: 0 0 16px;
-      color: var(--ink-soft);
-    }
-    p:last-child { margin-bottom: 0; }
-    p em { color: var(--ink); font-style: italic; }
-
     .hero .sub {
-      font-size: 1.08rem;
+      font-size: 1.1rem;
       color: var(--ink-soft);
-      margin: 0 0 8px;
-      line-height: 1.55;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
     }
     .hero .trust {
-      font-size: 0.95rem;
-      color: var(--ink-soft);
-      font-style: italic;
-      margin: 0 0 30px;
+      font-size: 0.9rem;
+      color: var(--ink-mute);
+      margin: 16px auto 0;
+      max-width: 560px;
+      line-height: 1.5;
     }
 
-    .cta-button {
+    /* Big primary CTA — used in hero and price card */
+    .hero-cta {
       display: inline-block;
       background: var(--navy);
       color: #fff;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.1rem;
-      padding: 20px 44px;
+      font-size: 1.25rem;
+      padding: 22px 56px;
       border-radius: 10px;
-      letter-spacing: 0.005em;
       border: 0;
       cursor: pointer;
+      letter-spacing: 0.005em;
+      margin-top: 36px;
       transition: background .15s ease, color .15s ease, transform .1s ease;
     }
-    .cta-button:hover { background: var(--amber); color: var(--navy); }
-    .cta-button:active { transform: translateY(1px); }
-    .cta-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .hero-cta:hover { background: var(--amber); color: var(--navy); }
+    .hero-cta:active { transform: translateY(1px); }
+    .hero-cta:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-    @media (max-width: 480px) {
-      .cta-button {
-        display: block;
-        width: 100%;
-        padding: 18px 24px;
-        font-size: 1.05rem;
-        text-align: center;
-      }
-    }
-
-    .deliverables {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      border-top: 1px solid var(--rule);
-    }
-    .deliverables li {
-      border-bottom: 1px solid var(--rule);
-      padding: 14px 0 14px 26px;
-      position: relative;
+    /* Section headings — centered */
+    section h2 {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      margin: 0 0 32px;
       color: var(--ink);
-      line-height: 1.55;
-    }
-    .deliverables li::before {
-      content: "";
-      position: absolute;
-      left: 2px;
-      top: 24px;
-      width: 14px;
-      height: 2px;
-      background: var(--navy);
     }
 
+    /* How it works */
     .steps {
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
+      max-width: 640px;
+      margin: 0 auto;
     }
     .step {
       border: 1px solid var(--rule);
       border-radius: 8px;
-      padding: 22px 20px;
+      padding: 24px 22px;
       background: var(--surface);
+      text-align: center;
     }
     .step .num {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: var(--navy);
       color: #fff;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 0 14px;
+      margin: 0 auto 14px;
     }
     .step h3 {
       font-size: 1rem;
@@ -187,104 +158,129 @@
       line-height: 1.5;
     }
 
+    /* What you get */
+    .deliverables {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 600px;
+      border-top: 1px solid var(--rule);
+    }
+    .deliverables li {
+      border-bottom: 1px solid var(--rule);
+      padding: 16px 0 16px 28px;
+      position: relative;
+      color: var(--ink);
+      line-height: 1.55;
+      text-align: left;
+    }
+    .deliverables li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 26px;
+      width: 14px;
+      height: 2px;
+      background: var(--navy);
+    }
+
+    /* Price card */
     .price-card {
       background: var(--surface);
       border: 1px solid var(--rule);
       border-top: 3px solid var(--navy);
       border-radius: 8px;
-      padding: 36px 24px 30px;
+      padding: 48px 28px 36px;
       text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
       box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 14px 36px -22px rgba(26,35,50,0.28);
     }
     .price-card .price {
-      font-size: 3.1rem;
+      font-size: 3.4rem;
       line-height: 1;
       color: var(--navy);
-      font-weight: 700;
-      margin: 0 0 6px;
+      font-weight: 800;
+      margin: 0 0 8px;
       letter-spacing: -0.02em;
     }
     .price-card .price-note {
       color: var(--ink-soft);
-      margin: 0 0 22px;
+      margin: 0 0 28px;
       font-size: 1rem;
     }
-    .price-card .cta-button {
-      margin: 4px 0 22px;
-    }
-    .price-card .disclaimer {
-      margin: 0 auto;
-      max-width: 480px;
-      font-size: 0.85rem;
-      color: var(--ink-soft);
-      line-height: 1.55;
-    }
+    .price-card .hero-cta { margin-top: 0; }
     .price-card .refund {
-      margin: 14px auto 0;
+      margin: 22px auto 0;
       font-style: italic;
       font-size: 0.9rem;
       color: var(--ink-soft);
       line-height: 1.55;
-      max-width: 480px;
+      max-width: 420px;
     }
-
-    .nots {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .nots li {
-      padding: 6px 0 6px 22px;
-      position: relative;
-      color: var(--ink-soft);
+    .price-card .disclaimer {
+      margin: 14px auto 0;
+      font-size: 0.82rem;
+      color: var(--ink-mute);
       line-height: 1.55;
-    }
-    .nots li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: var(--ink-soft);
-      opacity: 0.55;
+      max-width: 460px;
     }
 
-    .note {
-      background: var(--note-bg);
-      border-left: 3px solid var(--navy);
-      padding: 20px 22px;
-      border-radius: 0 4px 4px 0;
-    }
-    .note p { color: var(--ink); }
-    .signoff {
-      margin-top: 14px;
-      font-weight: 600;
+    /* Founder note — short, centered */
+    .founder { text-align: center; }
+    .founder p {
+      max-width: 600px;
+      margin: 0 auto;
       color: var(--ink);
+      font-size: 1.05rem;
+      line-height: 1.65;
     }
 
+    /* Footer */
     footer {
-      margin-top: 72px;
-      padding-top: 24px;
+      margin-top: 96px;
+      padding-top: 28px;
       border-top: 1px solid var(--rule);
       color: var(--ink-soft);
       font-size: 0.9rem;
       line-height: 1.6;
+      text-align: center;
     }
     footer .name { color: var(--ink); font-weight: 600; }
-    footer .sep { color: var(--rule-strong); margin: 0 8px; }
+    footer .sep { color: var(--rule); margin: 0 8px; }
+    footer a { color: inherit; text-decoration: none; }
+    footer a:hover { color: var(--ink); text-decoration: underline; }
 
+    /* Mobile (≤ 480px) */
+    @media (max-width: 480px) {
+      .wrap { padding: 36px 22px 56px; }
+      .hero h1 { font-size: 2rem; }
+      .hero .sub { font-size: 1.05rem; }
+      .hero-cta {
+        display: block;
+        width: 100%;
+        padding: 20px 24px;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      section { margin-top: 80px; }
+      footer { margin-top: 80px; }
+      .price-card { padding: 36px 22px 28px; }
+      .price-card .price { font-size: 3rem; }
+    }
+
+    /* Desktop (≥ 700px) */
     @media (min-width: 700px) {
-      .wrap { max-width: 720px; padding: 56px 28px 96px; }
-      h1 { font-size: 3rem; line-height: 1.08; }
-      h2 { font-size: 1.35rem; }
-      .hero .sub { font-size: 1.2rem; }
-      .price-card { padding: 48px 40px 40px; }
-      .price-card .price { font-size: 3.6rem; }
-      section { margin-top: 64px; }
-      .wordmark { font-size: 12px; margin-bottom: 26px; }
+      .wrap { padding: 80px 28px 96px; }
+      .hero h1 { font-size: 3.25rem; }
+      .hero .sub { font-size: 1.25rem; }
+      section h2 { font-size: 1.5rem; }
       .steps { grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+      section { margin-top: 112px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cta-button { transition: none; }
+      .hero-cta { transition: none; }
     }
   </style>
 </head>
@@ -292,30 +288,17 @@
   <div class="wrap">
     <main>
       <section class="hero">
-        <p class="wordmark">Show Up Report<span class="dot" aria-hidden="true"></span></p>
-        <h1>Are customers finding your business when they ask AI or Google who to hire?</h1>
-        <p class="sub">A $39 one-time AI Search Visibility Audit for local home-service businesses. Plain-English report, delivered within 48 hours.</p>
-        <p class="trust">Built for HVAC and plumbing companies in San Diego County.</p>
-        <a class="cta-button" href="https://buy.stripe.com/dRmcN7eF99Ay035b29aMU00" target="_blank" rel="noopener">Buy the Audit — $39</a>
-      </section>
-
-      <section>
-        <h2>The problem</h2>
-        <p>Most local home-service jobs still start with someone asking a question. They ask a neighbor, they ask Google, and now they ask ChatGPT. The first two have been around for years. The third is new, and it is changing which businesses get recommended.</p>
-        <p>When somebody in your area asks "who should I call for AC repair near me?" or "best emergency plumber in San Diego," the answer is built from public signals — your website, your service-area pages, your Google profile, your reviews, and how those compare to the shop two ZIP codes over.</p>
-        <p>The question worth answering: <em>Who shows up instead of you, and what public signals make them look easier to recommend?</em></p>
-      </section>
-
-      <section>
-        <h2>What you get</h2>
-        <ul class="deliverables">
-          <li>Customer-style AI and search prompt checks — what your prospects are actually typing, and who comes back as the answer</li>
-          <li>A plain-English visibility score</li>
-          <li>A snapshot of nearby competitors and where they look stronger</li>
-          <li>Website, service-area, review, and trust-signal review</li>
-          <li>A ranked action list, ordered by impact and effort</li>
-          <li>Owner-readable next steps you can use yourself or hand to your website person</li>
-        </ul>
+        <svg class="logo" width="56" height="56" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Show Up Report logo">
+          <rect width="32" height="32" rx="6" fill="#1a2332"/>
+          <rect x="7" y="20" width="4" height="6" fill="#fbbf24"/>
+          <rect x="14" y="14" width="4" height="12" fill="#fbbf24"/>
+          <rect x="21" y="8" width="4" height="18" fill="#fbbf24"/>
+        </svg>
+        <p class="wordmark">Show Up Report<span class="dot" aria-hidden="true">•</span></p>
+        <h1>Customers are using AI to find local businesses. Most plumbers and HVAC companies don't show up.</h1>
+        <p class="sub">Find out exactly how AI sees you, who shows up instead, and what to fix. $39, delivered in 48 hours.</p>
+        <a href="https://buy.stripe.com/dRmcN7eF99Ay035b29aMU00" class="hero-cta" target="_blank" rel="noopener">Buy the Audit — $39</a>
+        <p class="trust">Built for HVAC and plumbing companies in San Diego County · 7-day refund · No subscription</p>
       </section>
 
       <section>
@@ -323,69 +306,49 @@
         <div class="steps">
           <div class="step">
             <div class="num">1</div>
-            <h3>You buy the audit</h3>
-            <p>$39, one-time. No account, no subscription.</p>
+            <h3>Buy the audit</h3>
+            <p>$39 one-time, secure Stripe checkout</p>
           </div>
           <div class="step">
             <div class="num">2</div>
-            <h3>You send your website</h3>
-            <p>One email with your business URL. That's it.</p>
+            <h3>Send your website</h3>
+            <p>Reply to the confirmation email</p>
           </div>
           <div class="step">
             <div class="num">3</div>
-            <h3>You get the report</h3>
-            <p>A written, owner-readable report within 48 hours.</p>
+            <h3>Get the report</h3>
+            <p>Delivered to your inbox in 48 hours</p>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2>What you get</h2>
+        <ul class="deliverables">
+          <li>A visibility score showing how AI describes your business right now</li>
+          <li>A list of competitors who appear instead of you</li>
+          <li>The specific public signals to fix (website, Google profile, reviews)</li>
+          <li>A ranked action list — what to fix first</li>
+        </ul>
       </section>
 
       <section>
         <div class="price-card">
           <div class="price">$39</div>
           <p class="price-note">One-time. Delivered within 48 hours.</p>
-
-          <a href="https://buy.stripe.com/dRmcN7eF99Ay035b29aMU00" class="cta-button" target="_blank" rel="noopener">Buy the Audit — $39</a>
-
-          <p class="disclaimer">One-time fixed-scope report. No guaranteed revenue, leads, rankings, AI recommendations, reviews, or conversion lift. No monthly subscription. Delivery starts after payment and receipt of your business website.</p>
-
+          <a href="https://buy.stripe.com/dRmcN7eF99Ay035b29aMU00" class="hero-cta" target="_blank" rel="noopener">Buy the Audit — $39</a>
           <p class="refund">Don't find the report useful? Email me within 7 days and I'll refund you. No questions.</p>
-
-          <!-- TODO: once Stripe account is approved, replace the <a> above with the embedded Buy Button:
-          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-          <stripe-buy-button buy-button-id="buy_btn_1TUUXeRPTSzDfkvU5AWbz5wp" publishable-key="pk_live_51TUBivRPTSzDfkvUhQFsQZ3Rr3g65ICmFJMGHCA3vLpvNundWzTQpuDyFLei3Dza3pg7r1rdNIY9tGeP8V66mMC1008ATcYzkg"></stripe-buy-button>
-          -->
+          <p class="disclaimer">One-time fixed-scope report. No guaranteed revenue, leads, rankings, AI recommendations, reviews, or conversion lift. No monthly subscription.</p>
         </div>
       </section>
 
-      <section>
-        <h2>Why this is different</h2>
-        <p>Free graders give you a score. Monthly platforms give you a dashboard. This is a one-time, local, owner-readable report — written for the person who runs the business, not for a marketing team.</p>
-        <p>If you later want help fixing the gaps, ask and I can quote that separately. The audit stands on its own.</p>
-      </section>
-
-      <section>
-        <h2>What this is not</h2>
-        <ul class="nots">
-          <li>Not a ranking guarantee or AI recommendation guarantee</li>
-          <li>Not paid ads management</li>
-          <li>Not a deep SEO campaign</li>
-          <li>Not a full website redesign</li>
-          <li>Not monthly monitoring or any recurring service</li>
-          <li>Not a leads or revenue program</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>A note from me</h2>
-        <div class="note">
-          <p>I'm running this as a small, intentional test — a limited number of $39 audits to see whether owners actually find the report useful. If you'd like one of the early slots, the button above is how to claim it.</p>
-          <p class="signoff">Ryan — Show Up Report</p>
-        </div>
+      <section class="founder">
+        <p>I'm Ryan. I built Show Up Report because most local businesses are flying blind on how they look to AI search — and the fix is usually small, specific, and free to do yourself once you know what's broken.</p>
       </section>
     </main>
 
     <footer>
-      <p><span class="name">Show Up Report</span><span class="sep">·</span>[email]<span class="sep">·</span>[phone]</p>
+      <p><span class="name">Show Up Report</span><span class="sep">·</span><a href="mailto:ryant@showupreport.com">ryant@showupreport.com</a><span class="sep">·</span>San Diego, CA</p>
     </footer>
   </div>
 </body>
