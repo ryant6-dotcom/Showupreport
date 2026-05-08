@@ -91,21 +91,15 @@
 
     .section-label {
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-mute);
       font-weight: 600;
       border-top: 1px solid var(--rule);
       padding-top: 24px;
-      margin: 36px 0 8px;
+      margin: 36px 0 12px;
     }
-    .section-label:first-of-type { margin-top: 44px; }
-    .section-note {
-      font-size: 0.9rem;
-      color: var(--ink-mute);
-      margin: 0 0 20px;
-      line-height: 1.5;
-    }
+    .section-label:first-of-type { margin-top: 36px; }
 
     .field { margin-bottom: 20px; }
     .field label {
@@ -117,10 +111,17 @@
     }
     .field .req {
       color: var(--amber);
-      margin-left: 3px;
+      margin-left: 4px;
       font-weight: 700;
     }
+    .field .optional {
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--ink-mute);
+      margin-left: 5px;
+    }
     .field input,
+    .field textarea,
     .field select {
       width: 100%;
       padding: 14px;
@@ -130,12 +131,22 @@
       font-family: inherit;
       font-size: 1rem;
       color: var(--ink);
-      appearance: none;
-      -webkit-appearance: none;
       transition: border-color .15s ease, box-shadow .15s ease;
     }
-    .field input::placeholder { color: #a0aec0; }
+    .field input,
+    .field select {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field textarea {
+      line-height: 1.5;
+      resize: vertical;
+      min-height: 84px;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #a0aec0; }
     .field input:focus,
+    .field textarea:focus,
     .field select:focus {
       outline: none;
       border-color: var(--navy);
@@ -144,15 +155,46 @@
     .field input:invalid:not(:placeholder-shown) {
       border-color: var(--error-border);
     }
-    .field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%234a5568' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 38px;
-      cursor: pointer;
+    .field .help {
+      font-size: 0.85rem;
+      color: var(--ink-mute);
+      margin: 6px 0 0;
+      line-height: 1.45;
     }
-    .field select:invalid { color: #a0aec0; }
-    .field select option { color: var(--ink); }
+
+    /* Callout above buyer-search fields */
+    .callout {
+      background: #fef3c7;
+      color: var(--navy);
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 22px;
+    }
+
+    /* Progress bar */
+    .progress-wrap { margin: 0 0 28px; }
+    .progress-text {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin: 0 0 8px;
+      text-align: left;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--rule);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: var(--navy);
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
 
     .error {
       background: var(--error-bg);
@@ -244,6 +286,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .hero-cta { transition: none; }
+      .progress-fill { transition: none; }
     }
   </style>
 </head>
@@ -271,65 +314,105 @@
           <input type="hidden" name="subject" value="New audit intake — Show Up Report">
           <input type="hidden" name="from_name" value="Show Up Report intake form">
 
-          <p class="section-label">Business details</p>
+          <div class="progress-wrap">
+            <p id="progress-text" class="progress-text">0 of 8 required fields filled</p>
+            <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+          </div>
+
+          <p class="section-label">About your business</p>
 
           <div class="field">
-            <label for="business_name">Business name<span class="req" aria-hidden="true">*</span></label>
+            <label for="website_url">Website URL<span class="req" aria-hidden="true">•</span></label>
+            <input type="url" id="website_url" name="website_url" required pattern="https?://.+" placeholder="https://yourbusiness.com" autocomplete="url">
+            <p class="help">The site you want audited (include https://)</p>
+          </div>
+
+          <div class="field">
+            <label for="business_name">Business name (exact spelling)<span class="req" aria-hidden="true">•</span></label>
             <input type="text" id="business_name" name="business_name" required autocomplete="organization">
+            <p class="help">As it should appear in the report</p>
+          </div>
+
+          <p class="section-label">Three buyer searches you want tested</p>
+          <p class="callout">These are the exact searches we'll test in ChatGPT, Claude, and Google AI Mode. Be specific. Bad: "aviation parts." Better: "767 surplus engine parts."</p>
+
+          <div class="field">
+            <label for="buyer_search_1">Buyer search 1<span class="req" aria-hidden="true">•</span></label>
+            <input type="text" id="buyer_search_1" name="buyer_search_1" required>
+            <p class="help">A real customer-style query a buyer would type into ChatGPT or Google to find someone who does what you do</p>
           </div>
 
           <div class="field">
-            <label for="website">Website<span class="req" aria-hidden="true">*</span></label>
-            <input type="url" id="website" name="website" required placeholder="https://yourbusiness.com" autocomplete="url">
+            <label for="buyer_search_2">Buyer search 2<span class="req" aria-hidden="true">•</span></label>
+            <input type="text" id="buyer_search_2" name="buyer_search_2" required>
+            <p class="help">Same idea — a different angle</p>
           </div>
 
           <div class="field">
-            <label for="industry">Industry<span class="req" aria-hidden="true">*</span></label>
-            <select id="industry" name="industry" required>
-              <option value="" disabled selected>Select your industry</option>
-              <option>HVAC</option>
-              <option>Plumbing</option>
-              <option>Electrical</option>
-              <option>Roofing</option>
-              <option>Solar</option>
-              <option>Landscaping</option>
-              <option>Pest control</option>
-              <option>General contractor</option>
-              <option>Other</option>
-            </select>
+            <label for="buyer_search_3">Buyer search 3<span class="req" aria-hidden="true">•</span></label>
+            <input type="text" id="buyer_search_3" name="buyer_search_3" required>
+            <p class="help">Same idea — a third angle</p>
+          </div>
+
+          <p class="section-label">Top competitors (optional)</p>
+
+          <div class="field">
+            <label for="competitor_1">Competitor 1 <span class="optional">(optional)</span></label>
+            <input type="text" id="competitor_1" name="competitor_1">
+            <p class="help">A company you'd hate to lose business to</p>
           </div>
 
           <div class="field">
-            <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
+            <label for="competitor_2">Competitor 2 <span class="optional">(optional)</span></label>
+            <input type="text" id="competitor_2" name="competitor_2">
+            <p class="help">Optional</p>
+          </div>
+
+          <div class="field">
+            <label for="competitor_3">Competitor 3 <span class="optional">(optional)</span></label>
+            <input type="text" id="competitor_3" name="competitor_3">
+            <p class="help">Optional</p>
+          </div>
+
+          <p class="section-label">Service areas, profiles &amp; services</p>
+
+          <div class="field">
+            <label for="service_areas">Primary service areas or markets<span class="req" aria-hidden="true">•</span></label>
+            <textarea id="service_areas" name="service_areas" rows="3" required></textarea>
+            <p class="help">Cities, regions, countries, or "global"</p>
+          </div>
+
+          <div class="field">
+            <label for="social_urls">Social or profile URLs <span class="optional">(optional)</span></label>
+            <textarea id="social_urls" name="social_urls" rows="4"></textarea>
+            <p class="help">LinkedIn, Google Business Profile, X, Facebook, etc. — paste each URL on a new line</p>
+          </div>
+
+          <div class="field">
+            <label for="main_services">Main services or products<span class="req" aria-hidden="true">•</span></label>
+            <textarea id="main_services" name="main_services" rows="3" required></textarea>
+            <p class="help">What you actually sell</p>
+          </div>
+
+          <p class="section-label">Anything else (optional)</p>
+
+          <div class="field">
+            <label for="avoid_assumptions">Anything we should not assume <span class="optional">(optional)</span></label>
+            <textarea id="avoid_assumptions" name="avoid_assumptions" rows="3"></textarea>
+            <p class="help">Common misconceptions about your business or industry</p>
+          </div>
+
+          <p class="section-label">How to reach you</p>
+
+          <div class="field">
+            <label for="email">Email<span class="req" aria-hidden="true">•</span></label>
             <input type="email" id="email" name="email" required placeholder="you@yourbusiness.com" autocomplete="email">
-          </div>
-
-          <p class="section-label">Social profiles (optional)</p>
-          <p class="section-note">We'll check these for trust signals if you share them.</p>
-
-          <div class="field">
-            <label for="instagram">Instagram</label>
-            <input type="text" id="instagram" name="instagram" placeholder="@handle or full URL">
-          </div>
-
-          <div class="field">
-            <label for="tiktok">TikTok</label>
-            <input type="text" id="tiktok" name="tiktok" placeholder="@handle or full URL">
-          </div>
-
-          <div class="field">
-            <label for="linkedin">LinkedIn</label>
-            <input type="text" id="linkedin" name="linkedin" placeholder="Company page URL">
-          </div>
-
-          <div class="field">
-            <label for="twitter">X / Twitter</label>
-            <input type="text" id="twitter" name="twitter" placeholder="@handle or full URL">
+            <p class="help">Where we send the report</p>
           </div>
 
           <p id="form-error" class="error" hidden role="alert">Something went wrong. Please try again, or email <a href="mailto:ryant@showupreport.com">ryant@showupreport.com</a> directly.</p>
 
-          <button type="submit" class="hero-cta submit-btn">Continue to payment →</button>
+          <button type="submit" class="hero-cta submit-btn" disabled>Continue to payment ($39) →</button>
         </form>
       </div>
 
@@ -348,12 +431,68 @@
 
   <script>
     (function () {
+      var STORAGE_KEY = 'showupreport_intake_v2';
       var form = document.getElementById('intake-form');
       var formView = document.getElementById('form-view');
       var confirmation = document.getElementById('confirmation');
       var errorEl = document.getElementById('form-error');
       var submitBtn = form.querySelector('.submit-btn');
       var submitDefault = submitBtn.textContent;
+      var progressFill = document.getElementById('progress-fill');
+      var progressText = document.getElementById('progress-text');
+      var requiredFields = Array.prototype.slice.call(form.querySelectorAll('[required]'));
+      var totalRequired = requiredFields.length;
+
+      function userFields() {
+        return Array.prototype.filter.call(form.elements, function (el) {
+          return el.name && el.type !== 'hidden' && el.type !== 'submit' && el.type !== 'button';
+        });
+      }
+
+      function restore() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          var saved = JSON.parse(raw);
+          if (!saved || typeof saved !== 'object') return;
+          userFields().forEach(function (el) {
+            if (Object.prototype.hasOwnProperty.call(saved, el.name) && typeof saved[el.name] === 'string') {
+              el.value = saved[el.name];
+            }
+          });
+        } catch (e) { /* ignore */ }
+      }
+
+      function save() {
+        try {
+          var data = {};
+          userFields().forEach(function (el) { data[el.name] = el.value; });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) { /* ignore */ }
+      }
+
+      function clearStorage() {
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+      }
+
+      function updateProgress() {
+        var filled = 0;
+        for (var i = 0; i < requiredFields.length; i++) {
+          if (requiredFields[i].value && requiredFields[i].value.trim().length > 0) filled++;
+        }
+        var pct = totalRequired ? Math.round((filled / totalRequired) * 100) : 0;
+        progressFill.style.width = pct + '%';
+        progressText.textContent = filled + ' of ' + totalRequired + ' required fields filled';
+        submitBtn.disabled = filled < totalRequired;
+      }
+
+      restore();
+      updateProgress();
+
+      form.addEventListener('input', function () {
+        save();
+        updateProgress();
+      });
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -376,6 +515,7 @@
             if (!result.ok || !result.json || !result.json.success) {
               throw new Error((result.json && result.json.message) || 'Submission failed');
             }
+            clearStorage();
             formView.style.display = 'none';
             confirmation.style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
